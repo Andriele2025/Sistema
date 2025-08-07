@@ -1,166 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>Resumo Financeiro</title>
-<style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f0f2f5;
-    padding: 20px;
-    color: #333;
-    max-width: 720px;
-    margin: auto;
-  }
-  nav {
-    margin-bottom: 20px;
-  }
-  nav a {
-    margin-right: 15px;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  nav a:hover {
-    text-decoration: underline;
-  }
-  h2, h3 {
-    text-align: center;
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-    font-size: 1.1em;
-  }
-  ul li {
-    margin: 8px 0;
-    display: flex;
-    justify-content: space-between;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  #investimento-valor {
-    user-select: none;
-    font-weight: bold;
-  }
-  #toggle-investimento {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    margin-left: 8px;
-  }
-  #botao-zerar {
-    display: block;
-    margin: 25px auto;
-    padding: 12px 25px;
-    font-size: 1em;
-    font-weight: bold;
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  #botao-zerar:hover {
-    background-color: #c9302c;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>9Inove Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Solicite um Serviço - 9Inove Service</h2>
+    <form id="form-servico">
+      <label for="nome">Seu nome:</label>
+      <input type="text" id="nome" required />
 
-<nav>
-  <a href="entradas.html">Entradas</a> |
-  <a href="resumo.html">Resumo</a> |
-  <a href="historico.html">Histórico</a>
-</nav>
+      <label for="telefone">Seu telefone:</label>
+      <input type="tel" id="telefone" required />
 
-<h2>📊 Resumo Financeiro Atual</h2>
+      <label for="servico">Escolha o serviço:</label>
+      <select id="servico" required>
+        <option value="">-- Selecione --</option>
+        <option>Faxina</option>
+        <option>Diarista</option>
+        <option>Pedreiro</option>
+        <option>Jardineiro</option>
+        <option>Azulejista</option>
+        <option>Eletricista</option>
+        <option>Bombeiro hidráulico</option>
+      </select>
 
-<h3>Total Atual:</h3>
-<p style="text-align: center; font-size: 2em; font-weight: bold;" id="total">R$ 0.00</p>
+      <label for="descricao">Descreva o problema ou necessidade:</label>
+      <textarea id="descricao" rows="4" required></textarea>
 
-<h3>Divisão Atual:</h3>
-<ul>
-  <li>🛐 Dízimo (10%): <span id="dizimo">R$ 0.00</span></li>
-  <li>💡 Contas (30%): <span id="contas">R$ 0.00</span></li>
-  <li>🍽️ Alimentação (30%): <span id="alimentacao">R$ 0.00</span></li>
-  <li>📈 Investimento (30%): 
-    <span id="investimento-valor">••••••••</span>
-    <button id="toggle-investimento" aria-label="Mostrar/ocultar investimento">👁️</button>
-  </li>
-</ul>
+      <button type="submit">Enviar via WhatsApp</button>
+    </form>
+  </div>
 
-<button id="botao-zerar">Zerar Dízimo, Contas e Alimentação</button>
+  <script>
+    document.getElementById('form-servico').addEventListener('submit', function (e) {
+      e.preventDefault();
 
-<script>
-  function carregarResumo() {
-    const totalStr = localStorage.getItem('total');
-    const total = totalStr ? parseFloat(totalStr) : 0;
+      const nome = document.getElementById('nome').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const servico = document.getElementById('servico').value;
+      const descricao = document.getElementById('descricao').value.trim();
 
-    let investimentoAcumulado = parseFloat(localStorage.getItem('investimentoAcumulado')) || 0;
+      const mensagem = `👋 Olá! Meu nome é *${nome}*.\nQuero solicitar o serviço de *${servico}*.\n\n📞 Telefone para contato: ${telefone}\n📝 Detalhes: ${descricao}`;
+      const telefoneDestino = '5531996126215'; // seu número com DDD +55
 
-    // Se total for menor que investimento acumulado, corrige total para investimento acumulado
-    let totalCorrigido = total < investimentoAcumulado ? investimentoAcumulado : total;
-
-    const valorParaDividir = totalCorrigido - investimentoAcumulado;
-
-    const dizimo = valorParaDividir * 0.10;
-    const contas = valorParaDividir * 0.30;
-    const alimentacao = valorParaDividir * 0.30;
-
-    document.getElementById('total').textContent = `R$ ${totalCorrigido.toFixed(2)}`;
-    document.getElementById('dizimo').textContent = `R$ ${dizimo.toFixed(2)}`;
-    document.getElementById('contas').textContent = `R$ ${contas.toFixed(2)}`;
-    document.getElementById('alimentacao').textContent = `R$ ${alimentacao.toFixed(2)}`;
-
-    window.valorInvestimento = investimentoAcumulado;
-
-    const investimentoElem = document.getElementById('investimento-valor');
-    investimentoElem.textContent = '••••••••';
-
-    const toggleBtn = document.getElementById('toggle-investimento');
-    toggleBtn.onclick = () => {
-      if (investimentoElem.textContent === '••••••••') {
-        investimentoElem.textContent = `R$ ${window.valorInvestimento.toFixed(2)}`;
-      } else {
-        investimentoElem.textContent = '••••••••';
-      }
-    };
-  }
-
-  function zerarValores() {
-    const totalStr = localStorage.getItem('total');
-    const total = totalStr ? parseFloat(totalStr) : 0;
-
-    const investimentoAtual = total * 0.30;
-
-    let investimentoAcumulado = parseFloat(localStorage.getItem('investimentoAcumulado')) || 0;
-
-    investimentoAcumulado += investimentoAtual;
-
-    localStorage.setItem('investimentoAcumulado', investimentoAcumulado.toFixed(2));
-
-    // Aqui zera o total para começar de novo
-    localStorage.setItem('total', '0');
-
-    document.getElementById('total').textContent = `R$ 0.00`;
-    document.getElementById('dizimo').textContent = `R$ 0.00`;
-    document.getElementById('contas').textContent = `R$ 0.00`;
-    document.getElementById('alimentacao').textContent = `R$ 0.00`;
-
-    const investimentoElem = document.getElementById('investimento-valor');
-    investimentoElem.textContent = '••••••••';
-
-    window.valorInvestimento = investimentoAcumulado;
-  }
-
-  document.getElementById('botao-zerar').addEventListener('click', zerarValores);
-
-  window.onload = carregarResumo;
-</script>
-
+      const url = `https://wa.me/${telefoneDestino}?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    });
+  </script>
 </body>
 </html>
+
