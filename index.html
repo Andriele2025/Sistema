@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>9Inove Service</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
-    }
-    .container {
-      max-width: 500px;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    input, select, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      margin-top: 15px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #218838;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>9Inove Service</title>
+<style>
+  body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
+  .sidebar {
+    position: fixed; top:0; left:0;
+    width:200px; height:100%;
+    background:#111;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.5em; font-weight:bold;
+  }
+  .main {
+    margin-left:200px; padding:20px;
+  }
+  .gallery {
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;
+    margin-bottom:30px;
+  }
+  .gallery img {
+    width:100%; height:auto; display:block;
+    border-radius:4px;
+  }
+  form {
+    background:#222; padding:20px; border-radius:6px;
+  }
+  form label { display:block; margin-top:10px; font-weight:600; }
+  form input, form select, form textarea {
+    width:100%; padding:8px; margin-top:4px;
+    background:#333; color:#fff; border:none; border-radius:4px;
+  }
+  form button {
+    margin-top:15px; padding:10px; width:100%;
+    background:#25d366; color:#000; font-weight:bold; border:none;
+    border-radius:6px; cursor:pointer;
+  }
+  form button:hover { background:#1ebe57; }
+  .whatsapp-float {
+    position:fixed; bottom:20px; right:20px; background:#25d366;
+    color:#000; width:60px; height:60px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:30px; text-decoration:none;
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>Solicite um Serviço - 9Inove Service</h2>
-    <form id="form-servico">
-      <label for="nome">Seu nome:</label>
-      <input type="text" id="nome" required />
-
-      <label for="telefone">Seu telefone:</label>
-      <input type="tel" id="telefone" required />
-
-      <label for="servico">Escolha o serviço:</label>
+  <div class="sidebar">9Inove</div>
+  <div class="main">
+    <div class="gallery">
+      <img src="https://via.placeholder.com/200?text=Foto+1" alt="Foto 1" />
+      <img src="https://via.placeholder.com/200?text=Foto+2" alt="Foto 2" />
+      <img src="https://via.placeholder.com/200?text=Foto+3" alt="Foto 3" />
+      <img src="https://via.placeholder.com/200?text=Foto+4" alt="Foto 4" />
+    </div>
+    <form id="cadastro">
+      <label for="nome">Nome completo</label>
+      <input id="nome" type="text" required />
+      <label for="telefone">Telefone / WhatsApp</label>
+      <input id="telefone" type="tel" required />
+      <label for="servico">Serviço</label>
       <select id="servico" required>
-        <option value="">-- Selecione --</option>
+        <option value="">Selecione</option>
         <option>Faxina</option>
         <option>Diarista</option>
         <option>Pedreiro</option>
@@ -65,30 +72,35 @@
         <option>Eletricista</option>
         <option>Bombeiro hidráulico</option>
       </select>
-
-      <label for="descricao">Descreva o problema ou necessidade:</label>
-      <textarea id="descricao" rows="4" required></textarea>
-
+      <label for="desc">Descrição</label>
+      <textarea id="desc"></textarea>
+      <label for="cnpj">CNPJ</label>
+      <input id="cnpj" type="text" />
       <button type="submit">Enviar via WhatsApp</button>
     </form>
   </div>
-
+  <a href="https://wa.me/5531996126215" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
   <script>
-    document.getElementById('form-servico').addEventListener('submit', function (e) {
+    document.getElementById("cadastro").addEventListener("submit", function (e) {
       e.preventDefault();
-
-      const nome = document.getElementById('nome').value.trim();
-      const telefone = document.getElementById('telefone').value.trim();
-      const servico = document.getElementById('servico').value;
-      const descricao = document.getElementById('descricao').value.trim();
-
-      const mensagem = `👋 Olá! Meu nome é *${nome}*.\nQuero solicitar o serviço de *${servico}*.\n\n📞 Telefone para contato: ${telefone}\n📝 Detalhes: ${descricao}`;
-      const telefoneDestino = '5531996126215'; // seu número com DDD +55
-
-      const url = `https://wa.me/${telefoneDestino}?text=${encodeURIComponent(mensagem)}`;
-      window.open(url, '_blank');
+      const nome = document.getElementById("nome").value.trim();
+      const tel = document.getElementById("telefone").value.trim();
+      const serv = document.getElementById("servico").value;
+      const desc = document.getElementById("desc").value.trim();
+      const cnpj = document.getElementById("cnpj").value.trim();
+      if (!nome || !tel || !serv) {
+        return alert("Preencha nome, telefone e serviço.");
+      }
+      let msg = `Olá, sou *${nome}*.\nTelefone: ${tel}\nServiço: ${serv}\n`;
+      if (desc) msg += `Detalhes: ${desc}\n`;
+      if (cnpj) msg += `CNPJ: ${cnpj}\n`;
+      const url = "https://wa.me/5531996126215?text=" + encodeURIComponent(msg);
+      window.open(url, "_blank");
     });
   </script>
 </body>
 </html>
+
 
