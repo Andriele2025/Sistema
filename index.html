@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page com Imagem de Fundo</title>
+    <title>Página com Imagem de Fundo Parada</title>
     <style>
         * {
             margin: 0;
@@ -14,62 +14,31 @@
         body, html {
             height: 100%;
             font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Impede a barra de rolagem horizontal */
         }
 
-        /* Imagem de fundo que cobre toda a tela */
+        /* Definindo a imagem de fundo fixa */
         .background {
-            position: absolute;
+            position: fixed; /* A imagem de fundo fica fixa */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('Screenshot_20250719_113022_One UI Home.jpg'); /* Substitua pelo seu arquivo de imagem */
-            background-size: cover;
-            background-position: center;
-            z-index: -1; /* A imagem ficará atrás do conteúdo */
-        }
-
-        /* Barra de navegação fixa */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-            font-size: 1.2em;
-        }
-
-        .navbar a:hover {
-            background-color: #f4a261;
+            background-image: url('SuaImagemDeFundo.jpg'); /* Substitua com sua imagem */
+            background-size: cover; /* A imagem cobre toda a tela */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* A imagem de fundo não se move com o conteúdo */
+            z-index: -1; /* A imagem fica atrás do conteúdo */
         }
 
         /* Conteúdo da página */
-        .landing-page {
-            height: 100vh;
-            display: flex;
-            justify-content: flex-start;
-            padding-left: 20px;
-            color: white;
-        }
-
         .content {
-            max-width: 700px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
+            position: relative;
+            z-index: 1;
             padding: 20px;
-            margin-right: 20px;
-            flex: 1;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            min-height: 200vh; /* Faz a página ser maior que a tela para rolar */
         }
 
         h1 {
@@ -77,13 +46,8 @@
             margin-bottom: 20px;
         }
 
-        h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-
         p {
-            font-size: 1.2em;
+            font-size: 1.5em;
             margin-bottom: 20px;
         }
 
@@ -96,56 +60,10 @@
             cursor: pointer;
             text-transform: uppercase;
             border-radius: 5px;
-            margin-top: 20px;
         }
 
         .cta-button:hover {
             background-color: #e76f51;
-        }
-
-        /* Lista de Serviços */
-        .service-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .service-item {
-            background-color: rgba(0, 0, 0, 0.7);
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-item h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        .service-item p {
-            font-size: 1.1em;
-        }
-
-        /* Botão WhatsApp */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
         }
 
         /* Rodapé */
@@ -171,57 +89,15 @@
 </head>
 <body>
 
-    <!-- Imagem de Fundo -->
+    <!-- Imagem de fundo -->
     <div class="background"></div>
 
-    <!-- Barra de navegação -->
-    <div class="navbar">
-        <a href="#home">Início</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
-    </div>
-
-    <!-- Landing Page -->
-    <div class="landing-page">
-        <div class="content">
-            <h1>Bem-vindo à Nossa Página</h1>
-            <h2>Transformando Ideias em Realidade</h2>
-            <p>Nosso objetivo é oferecer soluções inovadoras para os seus desafios. Seja no design, na tecnologia ou no marketing, estamos aqui para ajudar sua empresa a crescer.</p>
-            <p>Descubra nossos serviços e aproveite as ofertas exclusivas que preparamos para você!</p>
-            <button class="cta-button">Saiba Mais</button>
-        </div>
-    </div>
-
-    <!-- Lista de Serviços -->
+    <!-- Conteúdo da página -->
     <div class="content">
-        <h2>Serviços</h2>
-        <ul class="service-list">
-            <li class="service-item">
-                <h3>Consultoria em Design</h3>
-                <p>Nosso time de especialistas ajuda a sua empresa a criar designs inovadores e eficazes para todos os seus projetos.</p>
-            </li>
-            <li class="service-item">
-                <h3>Desenvolvimento de Software</h3>
-                <p>Oferecemos soluções customizadas, com desenvolvimento de sistemas e aplicativos para resolver as necessidades do seu negócio.</p>
-            </li>
-            <li class="service-item">
-                <h3>Marketing Digital</h3>
-                <p>Criação de estratégias digitais que aumentam sua visibilidade e atraem novos clientes para o seu negócio.</p>
-            </li>
-            <li class="service-item">
-                <h3>Gestão de Redes Sociais</h3>
-                <p>Gerenciamos suas redes sociais com foco em engajamento e criação de conteúdo relevante para o seu público-alvo.</p>
-            </li>
-        </ul>
-        <button class="cta-button">Veja nossos Serviços</button>
+        <h1>Bem-vindo à Nossa Página</h1>
+        <p>Transformando ideias em realidade com soluções criativas e inovadoras.</p>
+        <button class="cta-button">Saiba Mais</button>
     </div>
-
-    <!-- Botão WhatsApp -->
-    <a href="https://wa.me/5511987654321" target="_blank">
-        <div class="whatsapp-btn">
-            <i class="fa fa-whatsapp" style="font-size: 24px;"></i> <!-- Ícone do WhatsApp -->
-        </div>
-    </a>
 
     <!-- Rodapé -->
     <footer>
@@ -230,4 +106,4 @@
     </footer>
 
 </body>
-    </html>
+</html>
