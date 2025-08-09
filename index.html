@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Galeria da Família</title>
+  <meta charset="UTF-8" />
+  <title>Galeria Horizontal de Fotos</title>
   <style>
     body {
       margin: 0;
@@ -14,27 +14,42 @@
 
     h1 {
       color: #333;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    .galeria-horizontal {
+      display: flex;
       gap: 15px;
-      max-width: 1000px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      max-width: 90vw;
       margin: 0 auto;
+      scrollbar-width: thin;
+      scrollbar-color: #6b057b #f2f2f2;
     }
 
-    .galeria img {
-      width: 100%;
+    .galeria-horizontal::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .galeria-horizontal::-webkit-scrollbar-track {
+      background: #f2f2f2;
+    }
+
+    .galeria-horizontal::-webkit-scrollbar-thumb {
+      background-color: #6b057b;
+      border-radius: 4px;
+    }
+
+    .galeria-horizontal img {
       height: 150px;
-      object-fit: cover;
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .galeria img:hover {
+    .galeria-horizontal img:hover {
       transform: scale(1.05);
     }
 
@@ -61,16 +76,14 @@
 
   <h1>📷 Álbum da Família</h1>
 
-  <div class="galeria">
-    <img src="https://i.imgur.com/1.jpg" alt="Família 1" onclick="ampliar(this)">
-    <img src="https://i.imgur.com/2.jpg" alt="Família 2" onclick="ampliar(this)">
-    <img src="https://i.imgur.com/3.jpg" alt="Família 3" onclick="ampliar(this)">
-    <img src="https://i.imgur.com/4.jpg" alt="Família 4" onclick="ampliar(this)">
-    <img src="https://i.imgur.com/5.jpg" alt="Família 5" onclick="ampliar(this)">
-    <!-- Adicione quantas quiser -->
+  <div class="galeria-horizontal">
+    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Família 1" onclick="ampliar(this)">
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Família 2" onclick="ampliar(this)">
+    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Família 3" onclick="ampliar(this)">
+    <img src="https://images.unsplash.com/photo-1544187991-d71f0d2b8829?auto=format&fit=crop&w=400&q=80" alt="Família 4" onclick="ampliar(this)">
+    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=400&q=80" alt="Família 5" onclick="ampliar(this)">
   </div>
 
-  <!-- Modal para imagem ampliada -->
   <div class="modal" id="modal" onclick="fechar()">
     <img id="modal-img" src="" alt="Foto ampliada">
   </div>
