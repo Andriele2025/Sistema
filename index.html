@@ -2,69 +2,89 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Açaí pra você!</title>
+  <title>Galeria da Família</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #6b057b, #9c27b0);
-      color: white;
-      font-family: 'Arial', sans-serif;
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      padding: 30px;
       text-align: center;
-      padding: 50px;
-      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .desc {
-      font-size: 22px;
+      color: #333;
       margin-bottom: 40px;
     }
 
-    .acai-wrapper {
-      perspective: 1000px;
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    .acai-img {
-      width: 300px;
-      transform: rotateX(10deg) rotateY(0deg) translateZ(0);
-      transition: transform 0.8s ease, box-shadow 0.8s ease;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4);
-      border-radius: 20px;
-    }
-
-    .acai-img:hover {
-      transform: rotateX(0deg) rotateY(0deg) translateZ(80px) scale(1.1);
-      box-shadow: 0 80px 120px rgba(0,0,0,0.6);
-    }
-
-    .btn {
-      margin-top: 30px;
-      background-color: #ffcc00;
-      color: #6b057b;
-      padding: 15px 30px;
-      font-size: 20px;
-      border: none;
+    .galeria img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: transform 0.2s ease;
     }
 
-    .btn:hover {
-      background-color: #ffd633;
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Modal para ampliar imagem */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>🍓 Prove Agora!</h1>
-  <div class="desc">Nosso açaí tá tão bom que até pula da tela pra você!</div>
 
-  <div class="acai-wrapper">
-    <img class="acai-img" src="https://i.imgur.com/tFJw2GH.jpg" alt="Copo de açaí saindo da tela">
+  <h1>📷 Álbum da Família</h1>
+
+  <div class="galeria">
+    <img src="https://i.imgur.com/1.jpg" alt="Família 1" onclick="ampliar(this)">
+    <img src="https://i.imgur.com/2.jpg" alt="Família 2" onclick="ampliar(this)">
+    <img src="https://i.imgur.com/3.jpg" alt="Família 3" onclick="ampliar(this)">
+    <img src="https://i.imgur.com/4.jpg" alt="Família 4" onclick="ampliar(this)">
+    <img src="https://i.imgur.com/5.jpg" alt="Família 5" onclick="ampliar(this)">
+    <!-- Adicione quantas quiser -->
   </div>
 
-  <button class="btn">Quero esse açaí</button>
+  <!-- Modal para imagem ampliada -->
+  <div class="modal" id="modal" onclick="fechar()">
+    <img id="modal-img" src="" alt="Foto ampliada">
+  </div>
+
+  <script>
+    function ampliar(img) {
+      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('modal-img').src = img.src;
+    }
+
+    function fechar() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
