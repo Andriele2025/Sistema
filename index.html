@@ -1,106 +1,106 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Galeria de Fotos 400x300</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f2f2f2;
-      padding: 30px;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page com Navegação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
 
-    .galeria-horizontal {
-      display: flex;
-      gap: 15px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      max-width: 90vw;
-      margin: 0 auto;
-      scrollbar-width: thin;
-      scrollbar-color: #6b057b #f2f2f2;
-    }
+        /* Barra de navegação fixa */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000; /* Para ficar acima do conteúdo */
+        }
 
-    .galeria-horizontal::-webkit-scrollbar {
-      height: 8px;
-    }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1.2em;
+        }
 
-    .galeria-horizontal::-webkit-scrollbar-track {
-      background: #f2f2f2;
-    }
+        .navbar a:hover {
+            background-color: #f4a261;
+        }
 
-    .galeria-horizontal::-webkit-scrollbar-thumb {
-      background-color: #6b057b;
-      border-radius: 4px;
-    }
+        /* Página com imagem de fundo */
+        .landing-page {
+            height: 100vh;
+            background: url('sua-imagem.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 60px; /* Espaço para a barra de navegação */
+        }
 
-    .galeria-horizontal img {
-      width: 400px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
+        .content {
+            max-width: 600px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Contraste com a imagem */
+            border-radius: 10px;
+        }
 
-    .galeria-horizontal img:hover {
-      transform: scale(1.05);
-    }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-    }
+        p {
+            font-size: 1.2em;
+        }
 
-    .modal img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
-  </style>
+        .cta-button {
+            background-color: #f4a261;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #e76f51;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>📷 Galeria com Fotos Iguais (400x300)</h1>
+    <!-- Barra de navegação -->
+    <div class="navbar">
+        <a href="#home">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+    </div>
 
-  <div class="galeria-horizontal">
-    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Foto 1" onclick="ampliar(this)">
-    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Foto 2" onclick="ampliar(this)">
-    <img src="https://images.unsplash.com/photo-1544187991-d71f0d2b8829?auto=format&fit=crop&w=800&q=80" alt="Foto 3" onclick="ampliar(this)">
-    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80" alt="Foto 4" onclick="ampliar(this)">
-    <img src="https://images.unsplash.com/photo-1542831371-3a6a3c7f27a8?auto=format&fit=crop&w=800&q=80" alt="Foto 5" onclick="ampliar(this)">
-  </div>
-
-  <div class="modal" id="modal" onclick="fechar()">
-    <img id="modal-img" src="" alt="Foto ampliada" />
-  </div>
-
-  <script>
-    function ampliar(img) {
-      document.getElementById('modal').style.display = 'flex';
-      document.getElementById('modal-img').src = img.src;
-    }
-
-    function fechar() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
+    <!-- Landing Page -->
+    <div class="landing-page">
+        <div class="content">
+            <h1>Bem-vindo à Nossa Página</h1>
+            <p>Descubra mais sobre nossos produtos e ofertas exclusivas.</p>
+            <button class="cta-button">Saiba Mais</button>
+        </div>
+    </div>
 
 </body>
 </html>
