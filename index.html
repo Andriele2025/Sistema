@@ -1,106 +1,70 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>9Inove Service</title>
-<style>
-  body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
-  .sidebar {
-    position: fixed; top:0; left:0;
-    width:200px; height:100%;
-    background:#111;
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.5em; font-weight:bold;
-  }
-  .main {
-    margin-left:200px; padding:20px;
-  }
-  .gallery {
-    display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;
-    margin-bottom:30px;
-  }
-  .gallery img {
-    width:100%; height:auto; display:block;
-    border-radius:4px;
-  }
-  form {
-    background:#222; padding:20px; border-radius:6px;
-  }
-  form label { display:block; margin-top:10px; font-weight:600; }
-  form input, form select, form textarea {
-    width:100%; padding:8px; margin-top:4px;
-    background:#333; color:#fff; border:none; border-radius:4px;
-  }
-  form button {
-    margin-top:15px; padding:10px; width:100%;
-    background:#25d366; color:#000; font-weight:bold; border:none;
-    border-radius:6px; cursor:pointer;
-  }
-  form button:hover { background:#1ebe57; }
-  .whatsapp-float {
-    position:fixed; bottom:20px; right:20px; background:#25d366;
-    color:#000; width:60px; height:60px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    font-size:30px; text-decoration:none;
-  }
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <title>Açaí pra você!</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #6b057b, #9c27b0);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 50px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      font-size: 22px;
+      margin-bottom: 40px;
+    }
+
+    .acai-wrapper {
+      perspective: 1000px;
+    }
+
+    .acai-img {
+      width: 300px;
+      transform: rotateX(10deg) rotateY(0deg) translateZ(0);
+      transition: transform 0.8s ease, box-shadow 0.8s ease;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+      border-radius: 20px;
+    }
+
+    .acai-img:hover {
+      transform: rotateX(0deg) rotateY(0deg) translateZ(80px) scale(1.1);
+      box-shadow: 0 80px 120px rgba(0,0,0,0.6);
+    }
+
+    .btn {
+      margin-top: 30px;
+      background-color: #ffcc00;
+      color: #6b057b;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ffd633;
+    }
+  </style>
 </head>
 <body>
-  <div class="sidebar">9Inove</div>
-  <div class="main">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/200?text=Foto+1" alt="Foto 1" />
-      <img src="https://via.placeholder.com/200?text=Foto+2" alt="Foto 2" />
-      <img src="https://via.placeholder.com/200?text=Foto+3" alt="Foto 3" />
-      <img src="https://via.placeholder.com/200?text=Foto+4" alt="Foto 4" />
-    </div>
-    <form id="cadastro">
-      <label for="nome">Nome completo</label>
-      <input id="nome" type="text" required />
-      <label for="telefone">Telefone / WhatsApp</label>
-      <input id="telefone" type="tel" required />
-      <label for="servico">Serviço</label>
-      <select id="servico" required>
-        <option value="">Selecione</option>
-        <option>Faxina</option>
-        <option>Diarista</option>
-        <option>Pedreiro</option>
-        <option>Jardineiro</option>
-        <option>Azulejista</option>
-        <option>Eletricista</option>
-        <option>Bombeiro hidráulico</option>
-      </select>
-      <label for="desc">Descrição</label>
-      <textarea id="desc"></textarea>
-      <label for="cnpj">CNPJ</label>
-      <input id="cnpj" type="text" />
-      <button type="submit">Enviar via WhatsApp</button>
-    </form>
+  <h1>🍓 Prove Agora!</h1>
+  <div class="desc">Nosso açaí tá tão bom que até pula da tela pra você!</div>
+
+  <div class="acai-wrapper">
+    <img class="acai-img" src="https://i.imgur.com/tFJw2GH.jpg" alt="Copo de açaí saindo da tela">
   </div>
-  <a href="https://wa.me/5531996126215" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <script>
-    document.getElementById("cadastro").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const nome = document.getElementById("nome").value.trim();
-      const tel = document.getElementById("telefone").value.trim();
-      const serv = document.getElementById("servico").value;
-      const desc = document.getElementById("desc").value.trim();
-      const cnpj = document.getElementById("cnpj").value.trim();
-      if (!nome || !tel || !serv) {
-        return alert("Preencha nome, telefone e serviço.");
-      }
-      let msg = `Olá, sou *${nome}*.\nTelefone: ${tel}\nServiço: ${serv}\n`;
-      if (desc) msg += `Detalhes: ${desc}\n`;
-      if (cnpj) msg += `CNPJ: ${cnpj}\n`;
-      const url = "https://wa.me/5531996126215?text=" + encodeURIComponent(msg);
-      window.open(url, "_blank");
-    });
-  </script>
+
+  <button class="btn">Quero esse açaí</button>
 </body>
 </html>
-
