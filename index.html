@@ -62,6 +62,31 @@
       text-align: center;
     }
 
+    /* GALERIA DE FOTOS - EM COLUNA */
+    .galeria {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
     /* BOTÃO WHATSAPP */
     .whatsapp-btn {
       position: fixed;
@@ -111,6 +136,14 @@
         <li>✔️ Elétrica</li>
         <li>✔️ Gesso</li>
       </ul>
+
+      <!-- GALERIA DE FOTOS - EM COLUNA -->
+      <div class="galeria">
+        <img src="https://images.unsplash.com/photo-1582223607990-1efec78c3c74?auto=format&fit=crop&w=800&q=80" alt="Obra 1">
+        <img src="https://images.unsplash.com/photo-1591453089934-25f7f79b2c6e?auto=format&fit=crop&w=800&q=80" alt="Obra 2">
+        <img src="https://images.unsplash.com/photo-1588854337221-fc2e1fc5e69c?auto=format&fit=crop&w=800&q=80" alt="Obra 3">
+        <img src="https://images.unsplash.com/photo-1617606002778-35a1f05f0f88?auto=format&fit=crop&w=800&q=80" alt="Obra 4">
+      </div>
     </div>
   </main>
 
