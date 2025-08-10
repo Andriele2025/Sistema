@@ -1,109 +1,103 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página com Imagem de Fundo Parada</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <title>Elas Azulejista</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://raw.githubusercontent.com/andriele2025/Teste1/main/images.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-shadow: 2px 2px 5px #000;
+    }
 
-        body, html {
-            height: 100%;
-            font-family: Arial, sans-serif;
-            overflow-x: hidden; /* Impede a barra de rolagem horizontal */
-        }
+    /* MENU FIXO */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      z-index: 1000;
+    }
 
-        /* Definindo a imagem de fundo fixa */
-        .background {
-            position: fixed; /* A imagem de fundo fica fixa */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('SuaImagemDeFundo.jpg'); /* Substitua com sua imagem */
-            background-size: cover; /* A imagem cobre toda a tela */
-            background-position: center; /* Centraliza a imagem */
-            background-attachment: fixed; /* A imagem de fundo não se move com o conteúdo */
-            z-index: -1; /* A imagem fica atrás do conteúdo */
-        }
+    /* CONTEÚDO PRINCIPAL */
+    main {
+      padding-top: 80px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
-        /* Conteúdo da página */
-        .content {
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            min-height: 200vh; /* Faz a página ser maior que a tela para rolar */
-        }
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
 
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
+    /* BOTÃO WHATSAPP */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      z-index: 9999;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        p {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
+    .whatsapp-btn:hover {
+      background-color: #128C7E;
+    }
 
-        .cta-button {
-            background-color: #f4a261;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            font-size: 1.2em;
-            cursor: pointer;
-            text-transform: uppercase;
-            border-radius: 5px;
-        }
-
-        .cta-button:hover {
-            background-color: #e76f51;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer a {
-            color: #f4a261;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .whatsapp-btn img {
+      width: 38px;
+      height: 38px;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Imagem de fundo -->
-    <div class="background"></div>
+  <!-- MENU FIXO -->
+  <nav>
+    Elas Azulejista
+  </nav>
 
-    <!-- Conteúdo da página -->
-    <div class="content">
-        <h1>Bem-vindo à Nossa Página</h1>
-        <p>Transformando ideias em realidade com soluções criativas e inovadoras.</p>
-        <button class="cta-button">Saiba Mais</button>
-    </div>
+  <!-- CONTEÚDO CENTRAL -->
+  <main>
+    <h1>Bem-vindo ao meu site</h1>
+  </main>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2025 Minha Empresa. Todos os direitos reservados.</p>
-        <p><a href="#contato">Entre em contato</a></p>
-    </footer>
+  <!-- BOTÃO WHATSAPP VISÍVEL E FUNCIONAL -->
+  <a
+    class="whatsapp-btn"
+    href="https://wa.me/5511999999999"
+    target="_blank"
+    aria-label="WhatsApp"
+  >
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+      alt="WhatsApp"
+    />
+  </a>
 
 </body>
 </html>
