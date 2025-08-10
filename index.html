@@ -31,19 +31,35 @@
       z-index: 1000;
     }
 
-    /* CONTEÚDO PRINCIPAL */
+    /* CONTEÚDO CENTRAL */
     main {
       padding-top: 80px;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       text-align: center;
     }
 
     h1 {
-      font-size: 3em;
-      margin: 0;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .frase-impacto {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.5em;
+      line-height: 2em;
+      text-align: center;
     }
 
     /* BOTÃO WHATSAPP */
@@ -78,15 +94,27 @@
 
   <!-- MENU FIXO -->
   <nav>
-    davi Azulejista
+    Elas Azulejista
   </nav>
 
-  <!-- CONTEÚDO CENTRAL -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main>
-    <h1>Respeito à paginação não è Detalhe____è compromisso com a perfeição.</h1>
+    <div class="frase-impacto">
+      Respeito à paginação não é detalhe… é compromisso com a perfeição.
+    </div>
+
+    <div>
+      <h1>Serviços</h1>
+      <ul>
+        <li>✔️ Reformas e Reparo</li>
+        <li>✔️ Porcelanato</li>
+        <li>✔️ Elétrica</li>
+        <li>✔️ Gesso</li>
+      </ul>
+    </div>
   </main>
 
-  <!-- BOTÃO WHATSAPP VISÍVEL E FUNCIONAL -->
+  <!-- BOTÃO WHATSAPP -->
   <a
     class="whatsapp-btn"
     href="https://wa.me/5511999999999"
