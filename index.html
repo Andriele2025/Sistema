@@ -23,7 +23,7 @@
       width: 100%;
       background: rgba(0, 0, 0, 0.6);
       padding: 15px 30px;
-      font-size: 1.5em;
+      font-size: 1.5em; /* tamanho original */
       font-weight: bold;
       z-index: 1000;
     }
@@ -37,15 +37,17 @@
       text-align: center;
     }
 
+    /* Frase impacto com tamanho 2em */
     .frase-impacto {
-      font-size: 1.8em;
+      font-size: 2em; /* ajustado para menor */
       font-weight: bold;
       margin-bottom: 40px;
       max-width: 700px;
     }
 
-    h1 {
-      font-size: 2.5em;
+    /* Título Serviços maior */
+    main h1 {
+      font-size: 3em;
       margin-bottom: 20px;
     }
 
@@ -55,6 +57,8 @@
       font-size: 1.5em;
       line-height: 2em;
       margin-bottom: 40px;
+      max-width: 700px;
+      text-align: left;
     }
 
     ul li::before {
@@ -62,9 +66,7 @@
     }
 
     ul li {
-      text-align: left;
-      max-width: 700px;
-      margin: 0 auto 10px;
+      margin-bottom: 10px;
     }
 
     .galeria {
@@ -147,7 +149,7 @@
 
     .whatsapp-btn {
       position: fixed;
-      bottom: 80px; /* sobe um pouco para não tampar o rodapé */
+      bottom: 80px;
       right: 20px;
       width: 60px;
       height: 60px;
@@ -178,7 +180,7 @@
       color: #ccc;
       margin-top: 60px;
       position: relative;
-      z-index: 10000; /* para ficar acima do botão */
+      z-index: 10000;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
@@ -245,4 +247,4 @@
   </footer>
 
 </body>
-  </html>
+</html>
