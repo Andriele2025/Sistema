@@ -1,271 +1,279 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>Elas Azulejista</title>
-<style>
-  body {
-    margin: 0; padding: 0;
-    background-image: url('https://raw.githubusercontent.com/andriele2025/Teste1/main/images.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-shadow: 2px 2px 5px #000;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 15px 30px;
-    font-size: 1.5em;
-    font-weight: bold;
-    z-index: 1000;
-  }
-
-  main {
-    padding-top: 80px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .frase-impacto {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 40px;
-    max-width: 700px;
-  }
-
-  h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    font-size: 1.7em; /* diminuiu um pouco */
-    line-height: 2.2em;
-    margin-bottom: 40px;
-  }
-
-  ul li::before {
-    content: "✔️ ";
-  }
-
-  ul li {
-    text-align: left;
-    max-width: 700px;
-    margin: 0 auto 10px;
-  }
-
-  .galeria {
-    width: 100%;
-    max-width: 700px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin: 0 auto 40px;
-  }
-
-  .galeria img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.7);
-    transition: transform 0.3s ease;
-  }
-
-  .galeria img:hover {
-    transform: scale(1.02);
-  }
-
-  .comentarios-container {
-    max-width: 700px;
-    margin: 0 auto 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    padding: 0 10px;
-  }
-
-  .comentario {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    animation: entradaComentario 1.5s ease forwards;
-    background-color: rgba(255, 255, 255, 0.12);
-    padding: 20px 25px;
-    border-left: 5px solid #25D366;
-    border-radius: 8px;
-    color: #fff;
-    text-align: left;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-    font-size: 1.3em;
-    position: relative;
-  }
-
-  .comentario:nth-child(1) { animation-delay: 0s; }
-  .comentario:nth-child(2) { animation-delay: 1.2s; }
-  .comentario:nth-child(3) { animation-delay: 2.4s; }
-
-  .cliente-info {
-    margin-top: 12px;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #25D366;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .telefone {
-    color: #25D366;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .telefone:hover {
-    color: #128C7E;
-  }
-
-  @keyframes entradaComentario {
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
+  <meta charset="UTF-8" />
+  <title>Elas Azulejista</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://raw.githubusercontent.com/andriele2025/Teste1/main/images.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-shadow: 2px 2px 5px #000;
     }
-  }
 
-  /* Botão WhatsApp com efeito onda */
-  .whatsapp-btn {
-    position: fixed;
-    bottom: 30px; /* desceu um pouco */
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: #25D366;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    z-index: 9999;
-    cursor: pointer;
-    overflow: visible;
-  }
-  .whatsapp-btn::before,
-  .whatsapp-btn::after {
-    content: "";
-    position: absolute;
-    border: 2px solid #25D366;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    top: 0;
-    left: 0;
-    animation: pulse 2.5s infinite ease-out;
-    opacity: 0.7;
-    pointer-events: none;
-    box-sizing: border-box;
-  }
-  .whatsapp-btn::after {
-    animation-delay: 1.25s;
-  }
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.7;
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 30px;
+      font-size: 1.5em;
+      font-weight: bold;
+      z-index: 1000;
     }
-    100% {
-      transform: scale(1.8);
+
+    main {
+      padding-top: 80px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .frase-impacto {
+      font-size: 1.7em; /* levemente reduzido */
+      font-weight: bold;
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-size: 2.8em; /* levemente reduzido */
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.6em; /* levemente reduzido */
+      line-height: 2.2em;
+      margin-bottom: 40px;
+    }
+
+    ul li::before {
+      content: "✔️ ";
+    }
+
+    ul li {
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto 10px;
+    }
+
+    .galeria {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      margin: 0 auto 40px;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.02);
+    }
+
+    .comentarios-container {
+      max-width: 700px;
+      margin: 0 auto 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 0 10px;
+    }
+
+    .comentario {
       opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      animation: entradaComentario 1.5s ease forwards;
+      background-color: rgba(255, 255, 255, 0.12);
+      padding: 20px 25px;
+      border-left: 5px solid #25D366;
+      border-radius: 8px;
+      color: #fff;
+      text-align: left;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      font-size: 1.3em;
+      position: relative;
     }
-  }
 
-  .whatsapp-btn img {
-    width: 38px;
-    height: 38px;
-  }
+    .comentario:nth-child(1) { animation-delay: 0s; }
+    .comentario:nth-child(2) { animation-delay: 1.2s; }
+    .comentario:nth-child(3) { animation-delay: 2.4s; }
 
-  .rodape {
-    text-align: left;
-    padding: 15px 40px;
-    background: rgba(0, 0, 0, 0.6);
-    font-size: 1em;
-    color: #ccc;
-    margin-top: 60px;
-    position: relative;
-    z-index: 10000;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  }
-</style>
+    .cliente-info {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #25D366;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .telefone {
+      color: #25D366;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .telefone:hover {
+      color: #128C7E;
+    }
+
+    @keyframes entradaComentario {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      z-index: 9999;
+      cursor: pointer;
+      overflow: visible;
+    }
+
+    .whatsapp-btn::before,
+    .whatsapp-btn::after {
+      content: "";
+      position: absolute;
+      border: 2px solid #25D366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      top: 0;
+      left: 0;
+      animation: pulse 2.5s infinite ease-out;
+      opacity: 0.7;
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+
+    .whatsapp-btn::after {
+      animation-delay: 1.25s;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    .whatsapp-btn img {
+      width: 38px;
+      height: 38px;
+    }
+
+    .rodape {
+      text-align: left;
+      padding: 15px 40px;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 1em;
+      color: #ccc;
+      margin-top: 60px;
+      position: relative;
+      z-index: 10000;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+  </style>
 </head>
 <body>
 
-<nav>Rey Azulejista</nav>
+  <nav>Rey Azulejista</nav>
 
-<main>
-  <div class="frase-impacto">
-    Respeito à paginação não é detalhe… é compromisso com a perfeição.
-  </div>
+  <main>
+    <div class="frase-impacto">
+      Respeito à paginação não é detalhe… é compromisso com a perfeição.
+    </div>
 
-  <h1>Serviços</h1>
-  <ul>
-    <li>Reformas e Reparos</li>
-    <li>Porcelanato</li>
-    <li>Elétricista</li>
-    <li>Gesseiro</li>
-  </ul>
+    <h1>Serviços</h1>
+    <ul>
+      <li>Reformas e Reparos</li>
+      <li>Porcelanato</li>
+      <li>Elétricista</li>
+      <li>Gesseiro</li>
+    </ul>
 
-  <div class="galeria">
-    <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 1" />
-    <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 2" />
-    <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 3" />
-    <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 4" />
-  </div>
+    <div class="galeria">
+      <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 1" />
+      <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 2" />
+      <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 3" />
+      <img src="https://andriele2025.github.io/Teste1/IMG-20250527-WA0005.jpg" alt="Obra 4" />
+    </div>
 
-  <div class="comentarios-container">
-    <div class="comentario">
-      <p>“Sou Gabriela. Fiz serviço com elas e gostei demais! Indico totalmente.”</p>
-      <div class="cliente-info">
-        <span>📞</span>
-        <a href="tel:+5511999999999" class="telefone">(11) 99999-9999</a>
+    <div class="comentarios-container">
+      <div class="comentario">
+        <p>“Sou Gabriela. Fiz serviço com elas e gostei demais! Indico totalmente.”</p>
+        <div class="cliente-info">
+          <span>📞</span>
+          <a href="tel:+5511999999999" class="telefone">(11) 99999-9999</a>
+        </div>
+      </div>
+      <div class="comentario">
+        <p>“Fiquei impressionada com o cuidado e perfeição no acabamento do piso. Respeito total à paginação e ao meu projeto. Super recomendo!”</p>
+        <div class="cliente-info">
+          <span>📞</span>
+          <a href="tel:+5511888888888" class="telefone">(11) 88888-8888</a>
+        </div>
+      </div>
+      <div class="comentario">
+        <p>“Entrega no prazo e qualidade que superou as expectativas. Muito satisfeito!”</p>
+        <div class="cliente-info">
+          <span>📞</span>
+          <a href="tel:+551177
+            <a href="tel:+5511777777777" class="telefone">(11) 77777-7777</a>
+        </div>
       </div>
     </div>
-    <div class="comentario">
-      <p>“Fiquei impressionada com o cuidado e perfeição no acabamento do piso. Respeito total à paginação e ao meu projeto. Super recomendo!”</p>
-      <div class="cliente-info">
-        <span>📞</span>
-        <a href="tel:+5511888888888" class="telefone">(11) 88888-8888</a>
-      </div>
-    </div>
-    <div class="comentario">
-      <p>“Entrega no prazo e qualidade que superou as expectativas. Muito satisfeito!”</p>
-      <div class="cliente-info">
-        <span>📞</span>
-        <a href="tel:+5511777777777" class="telefone">(11) 77777-7777</a>
-      </div>
-    </div>
-  </div>
-</main>
+  </main>
 
-<a class="whatsapp-btn" href="https://wa.me/5511999999999" target="_blank" aria-label="WhatsApp">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-</a>
+  <!-- Botão WhatsApp com efeito onda -->
+  <a class="whatsapp-btn" href="https://wa.me/5511999999999" target="_blank" aria-label="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  </a>
 
-<footer class="rodape">
-  CNPJ: 12.345.678/0001-99
-</footer>
+  <!-- Rodapé com CNPJ -->
+  <footer class="rodape">
+    CNPJ: 12.345.678/0001-99
+  </footer>
 
 </body>
 </html>
